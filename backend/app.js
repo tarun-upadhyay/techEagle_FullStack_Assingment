@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const connect = require("./DB/db.config");
 const authRouter = require("./routes/authRoute");
+const productRouter = require("./routes/productRoute");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const { NotFoundError } = require("./errors");
 const app = express();
@@ -19,6 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/products", productRouter);
 app.use(errorHandlerMiddleware);
 app.use(NotFoundError);
 

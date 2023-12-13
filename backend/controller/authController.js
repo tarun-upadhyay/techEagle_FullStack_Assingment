@@ -22,7 +22,7 @@ const register = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ user: tokenUser, msg: "User Created Successfully" });
 };
-
+// This function is related to login of user.
 const login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {

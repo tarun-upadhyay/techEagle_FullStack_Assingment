@@ -45,4 +45,11 @@ const login = async (req, res) => {
   return res.status(StatusCodes.OK).json({ user: tokenUser });
 };
 
-module.exports = { register, login };
+const logout = async (req, res) => {
+  res.cookie("authToken", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+  });
+  res.status(200).json({ msg: "User logged out" });
+};
+module.exports = { register, login,logout };

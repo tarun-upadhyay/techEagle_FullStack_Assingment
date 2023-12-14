@@ -64,6 +64,29 @@ const getSingleOrder = async (req, res) => {
   checkPermissions(req.user, order.user);
   res.status(StatusCodes.OK).json({ order });
 };
+const getAllOrdersManager = async (req, res) => {
+  const allOrders = await OrderModel.find({});
+  res.status(StatusCodes.OK).json({ allOrders, count: allOrders.length });
+};
+const updateOrder = async (req, res) => {
+  const { id: orderId } = req.params;
+  const { status } = req.body;
 
+  const order = await OrderModel.findOne({ _id: orderId });
+  if (!order) {
+    throw new CustomError.NotFoundError(`No order with id : ${orderId}`);
+  }
+  checkPermissions(req.user, order.user);
 
-module.exports = { createOrder, getAllOrderCustomer, getSingleOrder };
+  order.status = status;
+  await order.save();
+
+  res.status(StatusCodes.OK).json({ order });
+};
+
+module.exports = {
+  createOrder,
+  getAllOrderCustomer,
+  getSingleOrder,
+  updateOrder,
+};

@@ -2,6 +2,7 @@ const {
   createOrder,
   getAllOrderCustomer,
   getSingleOrder,
+  updateOrder,
 } = require("../controller/orderController");
 const {
   authenticateUser,
@@ -17,7 +18,9 @@ router
     [authenticateUser, authorizePermissions("customer")],
     getAllOrderCustomer
   );
-router.route("/:id").get([authenticateUser], getSingleOrder);
+router
+  .route("/:id")
+  .get([authenticateUser], getSingleOrder)
+  .patch([authenticateUser, authorizePermissions("manager")], updateOrder);
 
 module.exports = router;
-

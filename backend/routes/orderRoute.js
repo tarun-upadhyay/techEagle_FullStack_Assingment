@@ -3,6 +3,7 @@ const {
   getAllOrderCustomer,
   getSingleOrder,
   updateOrder,
+  getAllOrdersManager,
 } = require("../controller/orderController");
 const {
   authenticateUser,
@@ -18,6 +19,14 @@ router
     [authenticateUser, authorizePermissions("customer")],
     getAllOrderCustomer
   );
+
+router
+  .route("/manager")
+  .get(
+    [authenticateUser, authorizePermissions("manager")],
+    getAllOrdersManager
+  );
+
 router
   .route("/:id")
   .get([authenticateUser], getSingleOrder)

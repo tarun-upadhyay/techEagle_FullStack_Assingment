@@ -71,7 +71,14 @@ const getSingleOrder = async (req, res) => {
   res.status(StatusCodes.OK).json({ order });
 };
 const getAllOrdersManager = async (req, res) => {
-  const allOrders = await OrderModel.find({});
+  let allOrders = await OrderModel.find({}).sort({
+    createdAt: -1,
+  });
+  allOrders = allOrders.map((job) => {
+    const dateorg = moment(job.createdAt).format("DD MMM YYYY");
+    const crtd = moment(job.updatedAt).format("DD MMM YYYY");
+    return { ...job.toObject(), createdAt: dateorg, updatedAt: crtd };
+  });
   res.status(StatusCodes.OK).json({ allOrders, count: allOrders.length });
 };
 const updateOrder = async (req, res) => {

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LoadingCardSkeleton from "../../Components/LoadingCardSkeleton";
-import CardGrid from "../../Components/CardGrid";
-import { getData } from "../../Redux/Products/action";
+import { getData } from "../../../Redux/Products/action";
+import LoadingCardSkeleton from "../../../Components/LoadingCardSkeleton";
+import CardGrid from "../../../Components/CardGrid";
 import { Link } from "react-router-dom";
-
-const BuyDesk = () => {
+import { Button } from "@material-tailwind/react";
+import ProductComp from "./ProductComp";
+const AllProduct = () => {
   const dispatch = useDispatch();
   const storeContext = useSelector((store) => store.AppReducer);
   useEffect(() => {
@@ -30,17 +31,18 @@ const BuyDesk = () => {
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-8">
             {storeContext.products.products &&
               storeContext.products.products.map(
-                ({ name, image, price, description, _id }) => {
+                ({ name, image, price, description, _id,stock }) => {
                   return (
-                    <Link to={`/buydesk/${_id}`} key={_id}>
-                      <CardGrid
-                        name={name}
-                        image={image}
-                        price={price}
-                        css={true}
-                        description={description}
-                      />
-                    </Link>
+                    <ProductComp
+                      className=""
+                      name={name}
+                      image={image}
+                      price={price}
+                      description={description}
+                      key={_id}
+                      stock={stock}
+                      id={_id}
+                    ></ProductComp>
                   );
                 }
               )}
@@ -51,4 +53,4 @@ const BuyDesk = () => {
   );
 };
 
-export default BuyDesk;
+export default AllProduct;

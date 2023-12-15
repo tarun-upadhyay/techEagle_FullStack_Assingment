@@ -7,16 +7,67 @@ import BuyDesk from "./BuyDesk/BuyDesk";
 import DetailPage from "./Detailpage/DetailPage";
 import Cart from "./Cart/Cart";
 import Order from "./Order/Order";
+import { AdminPrivateRoute, PrivateRoute } from "../Components/PrivateRoute";
+import { useSelector } from "react-redux";
+import AdminHomepage from "./Manager/AdminHomepage/AdminHomepage";
+import AllProduct from "./Manager/allProduct/AllProduct";
+import EditProduct from "./Manager/EditProduct/EditProduct";
+import Addproduct from "./Manager/AddProduct/Addproduct";
+import LatestOrders from "./Manager/Orders/LatestOrders";
 const MainRoute = () => {
+  const isAuth = useSelector((store) => store.AuthReducer.isAuth);
+
   return (
     <Routes>
-      <Route path="/" element={<Homepage />}></Route>
+      <Route
+        path="/"
+        element={isAuth.role === "manager" ? <AdminHomepage /> : <Homepage />}
+      ></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/register" element={<Register />}></Route>
       <Route path="/buydesk" element={<BuyDesk />}></Route>
-      <Route path="/cart" element={<Cart />}></Route>
-      <Route path="/order" element={<Order />}></Route>
+      <Route
+        path="/allproduct"
+        element={
+          <AdminPrivateRoute>
+            <AllProduct />
+          </AdminPrivateRoute>
+        }
+      ></Route>
+      <Route
+        path="/addproduct"
+        element={
+          <AdminPrivateRoute>
+            <Addproduct />
+          </AdminPrivateRoute>
+        }
+      ></Route>
+      <Route
+        path="/latestorder"
+        element={
+          <AdminPrivateRoute>
+            <LatestOrders />
+          </AdminPrivateRoute>
+        }
+      ></Route>
+      <Route
+        path="/cart"
+        element={
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        }
+      ></Route>
+      <Route
+        path="/order"
+        element={
+          <PrivateRoute>
+            <Order />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/buydesk/:id" element={<DetailPage />}></Route>
+      <Route path="/edit/:id" element={<EditProduct />}></Route>
       <Route
         path="*"
         element={

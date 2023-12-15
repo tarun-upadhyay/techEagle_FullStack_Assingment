@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Products = () => {
   const dispatch = useDispatch();
   const storeContext = useSelector((store) => store.AppReducer);
-  console.log(storeContext);
+  
   useEffect(() => {
     dispatch(getData);
     window.scroll(0, 0);
@@ -31,6 +31,7 @@ const Products = () => {
                       name={name}
                       image={image}
                       price={price}
+                      css={true}
                       description={description}
                     />
                   </Link>

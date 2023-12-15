@@ -6,12 +6,13 @@ const CartComponent = ({
   increaseItem,
   decreaseItem,
   deleteItem,
-  decValue,makePlaceOrder
+  decValue,
+  makePlaceOrder,
 }) => {
   const storeContext = useSelector((store) => store.AppReducer);
-  console.log(cartItems);
+
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-2xl w-[90%]">
       <h2 className="text-2xl font-bold mb-4">Shopping Cart</h2>
       {cartItems.length === 0 ? (
         <div className="h-[50vh] bg-white flex flex-col md:flex-row items-center justify-center round">
@@ -28,12 +29,12 @@ const CartComponent = ({
             {cartItems.map((item, index) => (
               <div
                 key={index}
-                className="flex items-start border-b border-gray-300 py-2 mt-1"
+                className="flex flex-col md:flex-row space-y-5 items-start border-b border-gray-300 py-2 mt-1 justify-center items-center"
               >
                 <img
                   src={item.product.image}
                   alt={item.product.name}
-                  className="w-48 h-48 object-cover mr-4 rounded-lg"
+                  className="w-[100%] md:w-48 h-48 object-cover mr-4 rounded-lg"
                 />
                 <div className="flex-1">
                   <p className="font-semibold text-xl uppercase">
@@ -80,12 +81,15 @@ const CartComponent = ({
               </div>
             ))}
           </div>
-          <div className="bg-yellow-50 p-10 my-2 rounded-xl font-dmsans">
+          <div className="bg-yellow-50 p-10 my-2 rounded-xl font-poppins">
             <h2 className="text-2xl font-bold mb-4 ">Place Order</h2>
             <p className="text-xl text-blue-600 font-bold">
               Total Price : Rs {storeContext.cartTotalPrice}
             </p>
-            <button className="inline-flex w-full items-center justify-center rounded-md px-3.5 py-2.5 font-semibold leading-7 text-white bg-black  hover:bg-black/80  mt-2" onClick={()=>makePlaceOrder()}>
+            <button
+              className="inline-flex w-full items-center justify-center rounded-md px-3.5 py-2.5 font-semibold leading-7 text-white bg-black  hover:bg-black/80  mt-2"
+              onClick={() => makePlaceOrder()}
+            >
               Place order
             </button>
           </div>

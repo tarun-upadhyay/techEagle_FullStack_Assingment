@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { emailSignup } from "../../validator/user";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../Redux/Auth/action";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const initalState = {
   naem: "",
@@ -16,21 +16,21 @@ const initalState = {
 const Login = () => {
   const dispatch = useDispatch();
   const storeContext = useSelector((store) => store.AuthReducer);
-  const navigate = useNavigate();
+  
   console.log(storeContext);
   const handleSubmit = (values) => {
     dispatch(register(values));
-    if (storeContext.isAuth) navigate("/");
   };
   const formik = useFormik({
     initialValues: initalState,
     validationSchema: emailSignup,
     onSubmit: handleSubmit,
   });
+  if (storeContext.isAuth) return <Navigate to="/" />;
   return (
     <div>
       <AuthenticationLayout />
-      <main className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
+      <main className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md p-6 xl:p-0">
         <form onSubmit={formik.handleSubmit} className="mt-8 mb-24">
           {storeContext.isError && storeContext.isError ? (
             <span className="text-red-600 pl-2 text-sm font-extrabold">

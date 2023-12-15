@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { addToCart, getSingleData } from "../../Redux/Products/action";
 import Skeleton from "react-loading-skeleton";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,18 +8,21 @@ import { ToastContainer, toast } from "react-toastify";
 const DetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { singleProduct, isLoading, errorMessage, isCartError } = useSelector(
     (store) => store.AppReducer
   );
-  const storeStatus = useSelector((store) => store.AppReducer);
-  console.log(storeStatus);
+
+  const isAuth = useSelector((store) => store.AuthReducer.isAuth);
+
   useEffect(() => {
     dispatch(getSingleData(id));
     window.scrollTo(0, 0);
   }, [dispatch, id]);
 
   const handleAddToCart = () => {
-    console.log("first");
+    if (!isAuth) return navigate("/login");
+
     dispatch(addToCart({ product: id })).then(() => {
       if (isCartError) {
         toast.warn(`${errorMessage}`, {
@@ -64,7 +67,7 @@ const DetailPage = () => {
     const { value, unit } = weight;
 
     return (
-      <div className="flex w-[90%] md:w-1/2 mx-auto space-x-6 bg-white p-8 font-poppins px-10 rounded-3xl">
+      <div className="flex flex-col xl:flex-row w-[90%] justify-start md:w-1/2 mx-auto md:space-x-6 space-y-3 bg-white p-8 font-poppins xl:px-10 rounded-3xl">
         <ToastContainer
           position="top-right"
           autoClose={5000}

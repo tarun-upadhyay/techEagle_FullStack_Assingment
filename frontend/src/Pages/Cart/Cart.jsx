@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, } from "react";
+import React, { Suspense, useEffect } from "react";
 import CartComponent from "./CartComponent";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -13,8 +13,9 @@ import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const storeContext = useSelector((store) => store.AppReducer);
-const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
+    window.scroll(0, 0);
     dispatch(getCartItem);
   }, [dispatch]);
   const increaseItem = (productId, quantity) => {
@@ -31,7 +32,9 @@ const navigate = useNavigate()
     dispatch(deleteCartItem({ id })).then(() => dispatch(getCartItem));
   };
   const makePlaceOrder = () => {
-    dispatch(placeOrder()).then(() => dispatch(getCartItem)).then(()=> navigate("/order"));
+    dispatch(placeOrder())
+      .then(() => dispatch(getCartItem))
+      .then(() => navigate("/order"));
   };
 
   return (

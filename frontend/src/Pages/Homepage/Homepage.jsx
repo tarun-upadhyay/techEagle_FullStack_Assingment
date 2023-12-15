@@ -55,7 +55,7 @@ const Homepage = () => {
         </Carousel>
       </div>
       <div id="bestSellingCat" className="md:mx-3 my-5 font-poppins">
-        <div className="bg-white shadow-2xl py-10 md:px-48 px-5">
+        <div className="bg-white shadow-2xl py-10 xl:px-48 px-5">
           <h3 className="text-3xl font-bold text-left">BEST SELLING</h3>
           <div className="my-16">
             <Suspense fallback={<LoadingCardSkeleton />}>

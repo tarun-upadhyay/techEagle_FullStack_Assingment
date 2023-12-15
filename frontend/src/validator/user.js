@@ -16,3 +16,12 @@ export const emailSignup = Yup.object({
   email: Yup.string().email().required("Please enter your email"),
   address: Yup.string().min(2).required("Please provide your address"),
 });
+
+export const productValidator = Yup.object({
+  image: Yup.string().min(3).required("Please enter product url"),
+  name: Yup.string().min(3).max(50).required("Please enter product name"),
+  weight: Yup.number().required("Please enter product weight"),
+  description: Yup.string().min(3).required("Please enter product desc"),
+  price: Yup.number().required("Please enter product price"),
+  stock: Yup.number().required("Please enter product stock"),
+});

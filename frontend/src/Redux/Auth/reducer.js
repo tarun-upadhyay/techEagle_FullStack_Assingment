@@ -2,12 +2,11 @@ import { cookieData } from "../../Utils/Cookie-Data";
 import * as types from "./actionTypes";
 const initialState = {
   cred: cookieData("getUserDetail") || {},
-  isAuth: cookieData("getUserDetail").userId ? true : false,
+  isAuth: (await cookieData("auth")) || false,
   isAdmin: false,
   isLoading: false,
   isError: false,
   errorMessage: "",
- 
 };
 export const reducer = (oldState = initialState, action) => {
   const { type, payload } = action;
@@ -18,13 +17,12 @@ export const reducer = (oldState = initialState, action) => {
         isLoading: true,
       };
     case types.LOGIN_SUCCESS:
-      cookieData("userDetail", payload);
       return {
         ...oldState,
         cred: payload,
         isLoading: false,
         isError: true,
-        isAuth: true,
+        isAuth: payload,
       };
     case types.LOGIN_FAILURE:
       return {
@@ -38,12 +36,11 @@ export const reducer = (oldState = initialState, action) => {
         isLoading: true,
       };
     case types.SIGNUP_SUCCESS:
-      cookieData("userDetail", payload);
       return {
         ...oldState,
         cred: payload,
         isLoading: false,
-        isAuth: true,
+        isAuth: payload,
         isError: true,
         errorMessage: "",
       };

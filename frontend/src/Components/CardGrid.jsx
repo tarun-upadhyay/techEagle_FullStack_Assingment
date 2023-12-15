@@ -1,10 +1,14 @@
 import React from "react";
 
-const CardGrid = ({ name, price, image, description }) => {
+const CardGrid = ({ name, price, image, description, css }) => {
   return (
     <>
       {/* Sample cards */}
-      <div className="bg-gray-100 rounded-lg hover:translate-y-5 hover:shadow-lg shadow-2xl cursor-pointer">
+      <div
+        className={`bg-gray-100 rounded-lg cursor-pointer ${
+          css ? "hover:translate-y-5 hover:shadow-lg" : ""
+        }`}
+      >
         <div>
           <img
             src={image}

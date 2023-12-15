@@ -35,10 +35,14 @@ export const addToCart = (params) => (dispatch) => {
       dispatch({ type: types.ADD_TO_CART_SUCCESS });
     })
     .catch((err) => {
-      dispatch({
-        type: types.ADD_TO_CART_FAILURE,
-        payload: err.response.data.msg,
-      });
+      if (err.response.data.msg === "Authentication Invaild") {
+        return alert(err.response.data.msg);
+      } else {
+        return dispatch({
+          type: types.ADD_TO_CART_FAILURE,
+          payload: err.response.data.msg,
+        });
+      }
     });
 };
 
@@ -70,7 +74,6 @@ export const updateCartItem = (params) => (dispatch) => {
 };
 
 export const deleteCartItem = (params) => (dispatch) => {
-  console.log(params);
   dispatch({ type: types.DELETE_CART_REQUEST });
   return axios
     .delete(`/api/v1/cart/${params.id}`)
@@ -81,7 +84,6 @@ export const deleteCartItem = (params) => (dispatch) => {
 };
 
 export const placeOrder = (params) => (dispatch) => {
-  console.log(params);
   dispatch({ type: types.PLACE_ORDER_REQUEST });
   return axios
     .post(`/api/v1/order`)
@@ -103,12 +105,14 @@ export const getAllOrder = (dispatch) => {
     });
 };
 
-// export const addToCart = (id, params) => (dispatch) => {
-//   dispatch({ type: types.EDIT_PRODUCT_REQUEST });
-//   return axios
-//     .patch(`http://localhost:5000/products/${id}`, params)
-//     .then(() => {
-//       dispatch({ type: types.EDIT_PRODUCT_SUCCESS });
-//     })
-//     .catch(() => dispatch({ type: types.EDIT_PRODUCT_FAILURE }));
-// };
+export const getAdminAllOrder = (dispatch) => {
+  dispatch({ type: types.GET_ORDER_REQUEST });
+  return axios
+    .get(`/api/v1/order/manager`)
+    .then((res) => {
+      dispatch({ type: types.GET_ORDER_SUCCESS, payload: res.data.allOrders });
+    })
+    .catch(() => {
+      dispatch({ type: types.GET_ORDER_FAILURE });
+    });
+};

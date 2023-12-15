@@ -18,10 +18,8 @@ const { StatusCodes } = require("http-status-codes");
 const { isTokenValid } = require("./Utils");
 const app = express();
 
-
-
 app.use(helmet());
-app.use(cors());
+app.options("*", cors());
 app.use(xss());
 app.use(express.json());
 

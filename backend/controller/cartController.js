@@ -30,7 +30,12 @@ const getAllCartItem = async (req, res) => {
   const cartItems = await Cart.find({ user: req.body.user }).populate(
     "product"
   );
-  res.status(StatusCodes.OK).json({ cartItems, count: cartItems.length });
+  const totalPrice = cartItems.reduce((total, item) => {
+    const productPrice = item.product.price * item.quantity;
+    return total + productPrice;
+  }, 0);
+  // console.log(totalPrice);
+  res.status(StatusCodes.OK).json({ cartItems,totalPrice, count: cartItems.length });
 };
 
 const updateCartItem = async (req, res) => {

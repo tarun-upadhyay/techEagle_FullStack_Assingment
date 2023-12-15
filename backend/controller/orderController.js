@@ -4,7 +4,7 @@ const OrderModel = require("../Models/Order.Model");
 const CustomError = require("../errors");
 const CartModel = require("../Models/Cart.Model");
 const { checkPermissions } = require("../Utils");
-
+const moment = require("moment");
 const createOrder = async (req, res) => {
   const cartItems = await CartModel.find({ user: req.user.userId }).populate(
     "product"
@@ -52,7 +52,13 @@ const createOrder = async (req, res) => {
 };
 
 const getAllOrderCustomer = async (req, res) => {
-  const allOrders = await OrderModel.find({ user: req.user.userId });
+  let allOrders = await OrderModel.find({ user: req.user.userId }).sort({
+    createdAt: -1,
+  });
+  allOrders = allOrders.map((job) => {
+    const dateorg = moment(job.createdAt).format("DD MMM YYYY");
+    return { ...job.toObject(), createdAt: dateorg };
+  });
   res.status(StatusCodes.OK).json({ allOrders, count: allOrders.length });
 };
 const getSingleOrder = async (req, res) => {
@@ -89,5 +95,5 @@ module.exports = {
   getAllOrderCustomer,
   getSingleOrder,
   updateOrder,
-  getAllOrdersManager
+  getAllOrdersManager,
 };

@@ -4,7 +4,7 @@ const CustomError = require("../errors");
 const { attachCookiesToResponse } = require("../Utils");
 
 const register = async (req, res) => {
-  const { email, name, phone, password } = req.body;
+  const { email, name, phone, password, address } = req.body;
 
   const emailAlreadyExists = await User.findOne({ email });
 
@@ -14,7 +14,14 @@ const register = async (req, res) => {
 
   const isFirstAccount = (await User.countDocuments({})) === 0;
   const role = isFirstAccount ? "manager" : "customer";
-  const user = await User.create({ name, email, password, role, phone });
+  const user = await User.create({
+    name,
+    email,
+    password,
+    role,
+    phone,
+    address,
+  });
   const tokenUser = { name: user.name, userId: user._id, role: user.role };
 
   attachCookiesToResponse({ res, user: tokenUser });
@@ -52,4 +59,4 @@ const logout = async (req, res) => {
   });
   res.status(200).json({ msg: "User logged out" });
 };
-module.exports = { register, login,logout };
+module.exports = { register, login, logout };

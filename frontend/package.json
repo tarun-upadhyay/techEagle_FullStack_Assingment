@@ -58,5 +58,5 @@
   "devDependencies": {
     "tailwindcss": "^3.3.6"
   },
-  "proxy": "https://backend-techeagle.onrender.com"
+  "proxy": "https://hungry-teal-galoshes.cyclic.app"
 }

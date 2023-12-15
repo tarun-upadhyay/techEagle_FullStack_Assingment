@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const Product = require("./Models/Product.Model");
 const connect = require("./DB/db.config");
+const cors = require("cors");
+const helmet = require("helmet");
+const xss = require("xss-clean");
 const authRouter = require("./routes/authRoute");
 const productRouter = require("./routes/productRoute");
 const cartRouter = require("./routes/cartRoute");
@@ -14,6 +17,12 @@ const notFoundMiddleware = require("./middleware/not-found");
 const { StatusCodes } = require("http-status-codes");
 const { isTokenValid } = require("./Utils");
 const app = express();
+
+
+
+app.use(helmet());
+app.use(cors());
+app.use(xss());
 app.use(express.json());
 
 app.use(morgan("tiny"));

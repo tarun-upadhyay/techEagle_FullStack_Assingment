@@ -5,7 +5,7 @@ import * as types from "./actionTypes";
 export const getData = (dispatch) => {
   dispatch({ type: types.GET_PRODUCTS_REQUEST });
   return axios
-    .get(`http://localhost:5000/api/v1/products`)
+    .get(`/api/v1/products`)
     .then((res) => {
       dispatch({ type: types.GET_PRODUCTS_SUCCESS, payload: res.data });
     })

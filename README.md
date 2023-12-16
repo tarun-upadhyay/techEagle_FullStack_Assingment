@@ -174,8 +174,8 @@ If deleted successfully
 ![Alt text](./yImage/image-7.png)
 
 ---
-# Thank you for time 
--   Thank you using this application
+# Thank you for your time 
+-   Thank you for using this application
 -   Feel free to ask any query.
 
 [My Github](https://github.com/tarun-upadhyay)

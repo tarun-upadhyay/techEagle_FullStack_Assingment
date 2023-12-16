@@ -14,7 +14,7 @@ MongoDB, Expressjs, React/Redux, Nodejs
    </a>
 </p>
 
-> MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
+> MERN app,Tech Stacks-> MongoDB, Expressjs, React/Redux, TailwindCss, Github, Nodejs.
 
 If the web-app is not responsing, please wait and reload. This may occur due to Cyclic's free version not responding.
 ### Credential of Manager 

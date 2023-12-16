@@ -17,7 +17,11 @@ MongoDB, Expressjs, React/Redux, Nodejs
 > MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 
 MERN stack is the idea of using Javascript/Node for fullstack web development.
-
+### Credential of Manager 
+```
+email: manager@techeagle.com
+password: manager123
+```
 # Tech Eagle Full Stack Coding Assignment.
 
 ---
@@ -91,51 +95,95 @@ $ npm start        // run it locally
 # Customer
 
 - Homepage of Customer's website
-  
-  ![Alt text](image-5.png)
+
+  ![Alt text](./zImage/image-5.png)
 
 1. The website provides product information along with price information.
 
-   ![Alt text](image.png)
+   ![Alt text](./zImage/image.png)
 
 2. Detailed description of the product
 
-   ![Alt text](image-1.png)
+   ![Alt text](./zImage/image-1.png)
 
 3. For adding to cart we have to login first or signup first.
-   
-   ![Alt text](image-2.png)  
-   ![Alt text](image-3.png)
+
+   ![Alt text](./zImage/image-2.png)  
+   ![Alt text](./zImage/image-3.png)
+
 4. If we logined successfully so We will get the name of top right corner
-   
-   ![Alt text](image-4.png)
+
+   ![Alt text](./zImage/image-4.png)
+
 5. Suppose you logined successfully and you are adding to your cart then you get pop.
-   
-   ![Alt text](image-6.png)
+
+   ![Alt text](./zImage/image-6.png)
+
 6. If already present inside your cart then you will get errror message
-   
-   ![Alt text](image-7.png)
+
+   ![Alt text](./zImage/image-7.png)
+
 7. Come to Cart section if you cart is empty you will see like this
-   
-   ![Alt text](image-8.png)  
+
+   ![Alt text](./zImage/image-8.png)  
    and have some stuff inside it.
 
-   ![Alt text](image-9.png)
+   ![Alt text](./zImage/image-9.png)
    here you can increase quantity or delete it.
 
-   ![Alt text](image-10.png)
-8. Now it's time to place your order simply click on place order button.
-   
-   ![Alt text](image-11.png)
-9.  This is the order page which show case the all ordered items and their status.
-    
-   ![Alt text](image-12.png)
-   ![Alt text](image-14.png)
-10. The order status will change when mangaer accepts it, suppose it accepted or changed status.
+   ![Alt text](./zImage/image-10.png)
 
-  ![Alt text](image-15.png)
+8. Now it's time to place your order simply click on place order button.
+
+   ![Alt text](./zImage/image-11.png)
+
+9. This is the order page which show case the all ordered items and their status.
+
+![Alt text](./zImage/image-12.png)
+![Alt text](./zImage/image-14.png) 10. The order status will change when mangaer accepts it, suppose it accepted or changed status.
+
+![Alt text](./zImage/image-15.png)
 
 ### The features I showed are for customers, if products do not load or orders do not appear, please wait for a few minutes. It's a cyclical issue that will be resolved after some time.
 
 ---
+
 # Manager
+
+## Only role manager can access this page or api-end points.
+
+1. This page shows the Manager' store status
+
+![Alt text](./yImage/image.png)
+
+2.  Here Manager can manage the order status just clicking on update status.
+
+![Alt text](./yImage/image-1.png)
+![Alt text](./yImage/image-2.png) 3. Inside all products section have two button to manage the products.
+![Alt text](./yImage/image-3.png) 4. After clicking on the edit button, you will be redirected to the edit page, which will contain the old product details, and you can update the product by clicking on the update product button.
+
+![Alt text](./yImage/image-4.png) 5. Add product section to adding new product to the store.
+
+![Alt text](./yImage/image-5.png)
+
+6. For deleting just simply click on delete button it will first confirm you are sure or not
+   ![Alt text](./yImage/image-6.png)
+
+If deleted successfully
+
+![Alt text](./yImage/image-7.png)
+
+---
+# Thank you for time 
+-   Thank you using this application
+-   Feel free to ask any query.
+
+[My Github](https://github.com/tarun-upadhyay)
+https://github.com/tarun-upadhyay
+
+[My Portfolio](https://tarun-upadhyay.github.io/)
+https://tarun-upadhyay.github.io/
+
+[Email ME](mailto:tarunu88@gmail.com)
+
+---

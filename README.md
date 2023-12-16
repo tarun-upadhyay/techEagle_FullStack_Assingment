@@ -121,3 +121,9 @@ $ npm start        // run it locally
    ![Alt text](image-12.png)
    ![Alt text](image-14.png)
 10. The order status will change when mangaer accepts it, suppose it accepted or changed status.
+  ![Alt text](image-15.png)
+
+### The features I showed are for customers, if products do not load or orders do not appear, please wait for a few minutes. It's a cyclical issue that will be resolved after some time.
+
+---
+# Manager

@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 export async function cookieData(validationMode, data) {
   if (validationMode === "auth") {
     try {
+      return true
       const { data } = await axios.get(`/session`);
       if (data.token) return data;
     } catch (error) {

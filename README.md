@@ -32,12 +32,38 @@ $ yarn # or npm i
 ```
 ## Project structure
 ```terminal
-LICENSE
-package.json
-server/
-   package.json
-   .env (to create .env, check [prepare your secret session])
-client/
-   package.json
+frontend
+    - package.json
+    - src
+        - index.js
+        - App.jsx
+     - Components
+     - Pages
+         ---   
+backend
+    - package.json
+    - app.js
+    - controller
+        - authController.js
+        - allother controles..
+    - DB
+       - db.config.js
 ...
 ```
+## Client-side usage(PORT: 3000)
+```terminal
+$ cd frontend          // go to frontend folder
+$ yarn # or npm i     // npm install packages
+$ npm start          // run it locally
+```
+## Server-side usage(PORT: 5000 || 8080)
+```
+$ cd backend          // go to client folder
+$ yarn # or npm i    // npm install packages
+$ npm start        // run it locally
+```
+### Prepare your secret
+- Inside ->.env
+- MONGODB URL
+- JWTTOKEN
+- JWTEXPIRY

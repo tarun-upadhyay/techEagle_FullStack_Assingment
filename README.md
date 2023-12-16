@@ -91,6 +91,7 @@ $ npm start        // run it locally
 # Customer
 
 - Homepage of Customer's website
+  
   ![Alt text](image-5.png)
 
 1. The website provides product information along with price information.
@@ -98,29 +99,40 @@ $ npm start        // run it locally
    ![Alt text](image.png)
 
 2. Detailed description of the product
+
    ![Alt text](image-1.png)
 
 3. For adding to cart we have to login first or signup first.
+   
    ![Alt text](image-2.png)  
    ![Alt text](image-3.png)
 4. If we logined successfully so We will get the name of top right corner
+   
    ![Alt text](image-4.png)
 5. Suppose you logined successfully and you are adding to your cart then you get pop.
+   
    ![Alt text](image-6.png)
 6. If already present inside your cart then you will get errror message
+   
    ![Alt text](image-7.png)
 7. Come to Cart section if you cart is empty you will see like this
+   
    ![Alt text](image-8.png)  
    and have some stuff inside it.
+
    ![Alt text](image-9.png)
    here you can increase quantity or delete it.
+
    ![Alt text](image-10.png)
 8. Now it's time to place your order simply click on place order button.
+   
    ![Alt text](image-11.png)
-9. This is the order page which show case the all ordered items and their status.
+9.  This is the order page which show case the all ordered items and their status.
+    
    ![Alt text](image-12.png)
    ![Alt text](image-14.png)
 10. The order status will change when mangaer accepts it, suppose it accepted or changed status.
+
   ![Alt text](image-15.png)
 
 ### The features I showed are for customers, if products do not load or orders do not appear, please wait for a few minutes. It's a cyclical issue that will be resolved after some time.
